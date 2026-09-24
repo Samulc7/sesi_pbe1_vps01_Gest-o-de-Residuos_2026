@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gestão de Resíduos</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+        }
+
+        form {
+            text-align: left;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            background-color: #333;
+            color: white;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        hr {
+            margin: 30px 0;
+        }
+
+        #lista {
+            margin-top: 20px;
+        }
+
+        .ocorrencia {
+            background-color: #f7f7f7;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Gestão de Resíduos</h1>
+
+        <h2>Cadastrar Ocorrência</h2>
+
+        <form id="formulario">
+
+            <label>Local:</label>
+
+            <input type="text" id="local" required>
+
+            <br><br>
+
+            <label>Tipo de Resíduo:</label>
+
+            <input type="text" id="tipo_residuo" required>
+
+            <br><br>
+
+            <label>Nível de Risco:</label>
+
+            <select id="nivel_risco" required>
+
+                <option value="">Selecione</option>
+
+                <option value="Baixo">Baixo</option>
+
+                <option value="Médio">Médio</option>
+
+                <option value="Alto">Alto</option>
+
+            </select>
+
+            <br><br>
+
+            <label>Data:</label>
+
+            <input type="date" id="data_registro" required>
+
+            <br><br>
+
+            <label>Status:</label>
+
+            <select id="status" required>
+
+                <option value="">Selecione</option>
+
+                <option value="Pendente">Pendente</option>
+
+                <option value="Em andamento">Em andamento</option>
+
+                <option value="Resolvido">Resolvido</option>
+
+            </select>
+
+            <button type="submit">
+                Cadastrar
+            </button>
+
+        </form>
+
+        <hr>
+
+        <h2>Ocorrências cadastradas</h2>
+
+        <button type="button" onclick="listarOcorrencias()">
+            Atualizar lista
+        </button>
+
+        <div id="lista"></div>
+
+    </div>
+
+    <script>
+
+        const API = "http://localhost:3000";
+
+        const formulario = document.getElementById("formulario");
+
+
+        formulario.addEventListener("submit", async function (event) {
+
+            event.preventDefault();
+
+
+            const ocorrencia = {
+
+                local: document.getElementById("local").value,
+
+                tipo: document.getElementById("tipo_residuo").value,
+
+                nivel_risco: document.getElementById("nivel_risco").value,
+
+                data_registro: document.getElementById("data_registro").value,
+
+                status: document.getElementById("status").value
+
+            };
+
+
+            try {
+
+                const resposta = await fetch(`${API}/residuos`, {
+
+                    method: "POST",
+
+                    headers: {
+
+                        "Content-Type": "application/json"
+
+                    },
+
+                    body: JSON.stringify(ocorrencia)
+
+                });
+
+                if (!resposta.ok) {
+                    throw new Error("Não foi possível cadastrar a ocorrência.");
+                }
+
+                alert("Ocorrência cadastrada com sucesso!");
+                formulario.reset();
+                listarOcorrencias();
+
+            } catch (erro) {
+                console.error(erro);
+                alert("Erro ao cadastrar a ocorrência.");
+            }
+
+        });
+
+
+        async function listarOcorrencias() {
+
+            const lista = document.getElementById("lista");
+
+            try {
+
+                const resposta = await fetch(`${API}/residuos`);
+
+                if (!resposta.ok) {
+                    throw new Error("Não foi possível carregar as ocorrências.");
+                }
+
+                const ocorrencias = await resposta.json();
+
+                lista.innerHTML = ocorrencias.length
+                    ? ocorrencias.map(ocorrencia => `
+                        <div class="ocorrencia">
+                            <strong>Local:</strong> ${ocorrencia.local}<br>
+                            <strong>Tipo de Resíduo:</strong> ${ocorrencia.tipo}<br>
+                            <strong>Nível de Risco:</strong> ${ocorrencia.nivel_risco}<br>
+                            <strong>Data:</strong> ${ocorrencia.data_registro}<br>
+                            <strong>Status:</strong> ${ocorrencia.status}
+                        </div>
+                    `).join("")
+                    : "Nenhuma ocorrência cadastrada.";
+
+            } catch (erro) {
+                console.error(erro);
+                lista.textContent = "Erro ao carregar as ocorrências.";
+            }
+
+        }
+
+        listarOcorrencias();
+
+    </script>
+
+</body>
+
+</html>

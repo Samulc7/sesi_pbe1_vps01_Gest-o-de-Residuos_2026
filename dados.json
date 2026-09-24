@@ -1,0 +1,165 @@
+[
+  {
+    "id": 1,
+    "local": "rua gales",
+    "tipo_residuo": "lixo",
+    "nivel_risco": "medio",
+    "data_registro": "2026-09-24",
+    "status": "Pendente"
+  },
+  {
+    "id": 2,
+    "local": "rua gales",
+    "tipo_residuo": "lixo",
+    "nivel_risco": "medio",
+    "data_registro": "2026-09-24",
+    "status": "concluido"
+  },
+  {
+    "id": 3,
+    "local": "Rua São Paulo, 80",
+    "tipo_residuo": "Lixo doméstico",
+    "nivel_risco": "Baixo",
+    "data_registro": "2026-09-21",
+    "status": "Resolvido"
+  },
+  {
+    "id": 4,
+    "local": "Rua dos Ipês, 300",
+    "tipo_residuo": "Eletrônico",
+    "nivel_risco": "Alto",
+    "data_registro": "2026-09-20",
+    "status": "Pendente"
+  },
+  {
+    "id": 6,
+    "local": "rua ana cintra",
+    "tipo_residuo": "vidro",
+    "nivel_risco": "Médio",
+    "data_registro": "2026-10-26",
+    "status": "Pendente"
+  },
+  {
+    "id": 7,
+    "local": "rua dos irineus",
+    "tipo_residuo": "areia",
+    "nivel_risco": "Baixo",
+    "data_registro": "2026-11-17",
+    "status": "Pendente"
+  },
+  {
+    "id": 8
+  },
+  {
+    "id": 9,
+    "local": "Rua Central, 500",
+    "tipo_residuo": "Plástico",
+    "nivel_risco": "Baixo",
+    "data_registro": "2026-09-24",
+    "status": "Pendente"
+  },
+  {
+    "id": 10,
+    "local": "rua da magnolias"
+  },
+  {
+    "id": 11,
+    "local": "rua da magnolias"
+  },
+  {
+    "id": 12,
+    "local": "rua do golias"
+  },
+  {
+    "id": 13,
+    "local": "rua do golias"
+  },
+  {
+    "id": 14,
+    "local": "amparo"
+  },
+  {
+    "id": 15,
+    "local": "amparo"
+  },
+  {
+    "id": 16,
+    "local": "amparo"
+  },
+  {
+    "id": 17,
+    "local": "amparo"
+  },
+  {
+    "id": 18,
+    "local": "amparo"
+  },
+  {
+    "id": 19,
+    "local": "amparo"
+  },
+  {
+    "id": 20,
+    "local": "amparo"
+  },
+  {
+    "id": 21,
+    "local": "amparo"
+  },
+  {
+    "id": 22,
+    "local": "rua do golias"
+  },
+  {
+    "id": 23,
+    "local": "rua do golias"
+  },
+  {
+    "id": 24,
+    "local": "rua do golias"
+  },
+  {
+    "id": 25,
+    "nome": "Garrafa PET",
+    "tipo": "Plastico",
+    "quantidade": 10,
+    "unidade": "kg",
+    "local": "Rua do Golias"
+  },
+  {
+    "id": 26,
+    "local": "Rua Central, 500"
+  },
+  {
+    "id": 27,
+    "local": "Rua Central, 500"
+  },
+  {
+    "id": 28,
+    "local": "Rua Central, 500"
+  },
+  {
+    "id": 29,
+    "local": "Rua Central, 500"
+  },
+  {
+    "id": 30,
+    "local": "Rua Central, 500"
+  },
+  {
+    "id": 31,
+    "local": "Rua Central, 500",
+    "tipo_residuo": "Plástico",
+    "nivel_risco": "Baixo",
+    "data_registro": "2026-09-24",
+    "status": "Pendente"
+  },
+  {
+    "id": 32,
+    "local": "rua gales",
+    "tipo_residuo": "lixo",
+    "nivel_risco": "medio",
+    "data_registro": "2026-09-24",
+    "status": "Pendente"
+  }
+]
