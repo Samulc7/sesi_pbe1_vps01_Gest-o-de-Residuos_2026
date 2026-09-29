@@ -1,13 +1,17 @@
 const express = require("express");
 const fs = require("fs");
+const path = require("path");
 
 const app = express();
+
 const PORT = 3000;
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use(express.static(path.join(__dirname, "client")));
 
 const arquivo = "./dados.json";
-
 function lerDados() {
     if (!fs.existsSync(arquivo)) {
         fs.writeFileSync(arquivo, "[]");
@@ -169,6 +173,9 @@ app.delete("/residuos/:id", (req, res) => {
         mensagem: "Resíduo excluído com sucesso",
         residuo: removido
     });
+});
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "index.html"));
 });
 
 app.listen(PORT, () => {

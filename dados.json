@@ -161,5 +161,12 @@
     "nivel_risco": "medio",
     "data_registro": "2026-09-24",
     "status": "Pendente"
+  },
+  {
+    "id": 33,
+    "local": "amparo",
+    "nivel_risco": "Baixo",
+    "data_registro": "2026-10-30",
+    "status": "Pendente"
   }
 ]
